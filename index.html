@@ -22,6 +22,8 @@
             --bg-2: #12121a;
             --surface: rgba(255, 255, 255, 0.04);
             --surface-hover: rgba(255, 255, 255, 0.07);
+            --card: #1a1a24;
+            --card-hover: #202030;
             --border: rgba(255, 255, 255, 0.08);
             --border-2: rgba(255, 255, 255, 0.14);
             --border-hover: rgba(255, 255, 255, 0.25);
@@ -393,17 +395,17 @@
             text-overflow: ellipsis;
         }
 
-        /* ===== LISTA DE PROJETOS ===== */
+        /* ===== LISTA DE PROJETOS — CARDS MAIS CLAROS ===== */
         .projects-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .project-item {
-            padding: 18px 20px;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            padding: 20px 22px;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -413,6 +415,7 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .project-item::before {
@@ -428,43 +431,60 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        .project-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, 0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
         .project-item:hover::before { transform: scaleY(1); }
+        .project-item:hover::after { opacity: 1; }
 
         .project-item:hover {
-            background: var(--surface-hover);
-            border-color: var(--border-hover);
+            background: var(--card-hover);
+            border-color: rgba(139, 92, 246, 0.4);
             transform: translateX(6px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
         }
 
         .project-emoji {
-            width: 42px; height: 42px;
-            border-radius: 12px;
+            width: 46px; height: 46px;
+            border-radius: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.15);
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+            border: 1px solid rgba(139, 92, 246, 0.25);
             flex-shrink: 0;
             transition: transform 0.4s;
+            position: relative;
+            z-index: 1;
         }
 
         .project-item:hover .project-emoji {
             transform: scale(1.1) rotate(-8deg);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
         }
 
         .project-content {
             flex: 1;
             min-width: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .project-name {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 0.98rem;
+            font-size: 1rem;
             font-weight: 700;
             letter-spacing: -0.01em;
             color: var(--text);
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -481,34 +501,65 @@
             text-transform: uppercase;
             background: rgba(6, 182, 212, 0.12);
             color: var(--accent);
-            border: 1px solid rgba(6, 182, 212, 0.2);
+            border: 1px solid rgba(6, 182, 212, 0.25);
         }
 
         .project-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.82rem;
+            color: var(--text-dim);
             line-height: 1.5;
         }
 
+        /* ===== CTA "CLIQUE AQUI" — CLARO E COM EFEITO ===== */
         .project-cta {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
             flex-shrink: 0;
-            transition: gap 0.3s;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
+            position: relative;
+            z-index: 1;
+            padding: 8px 14px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.2px;
         }
 
-        .project-item:hover .project-cta { gap: 10px; }
+        .project-cta::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s;
+            filter: blur(8px);
+        }
+
+        .project-item:hover .project-cta {
+            color: white;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .project-item:hover .project-cta::before { opacity: 1; }
 
         .project-arrow {
-            transition: transform 0.3s;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-block;
         }
 
-        .project-item:hover .project-arrow { transform: translateX(2px); }
+        .project-item:hover .project-arrow { 
+            transform: translateX(4px);
+        }
 
         /* ===== CATÁLOGO ===== */
         .catalog-box {
@@ -750,18 +801,23 @@
             .hero-sub { font-size: 0.92rem; }
             .btn { padding: 11px 18px; font-size: 0.82rem; }
             .project-item {
-                padding: 14px;
+                padding: 16px;
                 gap: 12px;
+                flex-wrap: wrap;
             }
             .project-emoji {
-                width: 38px;
-                height: 38px;
-                font-size: 1.15rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
-            .project-name { font-size: 0.92rem; }
-            .project-desc { font-size: 0.75rem; }
+            .project-name { font-size: 0.94rem; }
+            .project-desc { font-size: 0.78rem; }
             .project-cta {
-                font-size: 0.72rem;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                width: 100%;
+                justify-content: center;
+                margin-top: 6px;
             }
             .catalog-box { padding: 30px 22px; }
             .whatsapp-float {
@@ -827,249 +883,7 @@
         </div>
     </section>
 
-    <!-- PROJETOS -->
-    <section class="section" id="projetos">
-        <div class="container">
-            <div class="section-head">
-                <div class="section-label">Portfólio</div>
-                <h2 class="section-title">Projetos que já criei</h2>
-            </div>
-
-            <div class="projects-list">
-
-                <a href="https://anadesenvolvedora.github.io/prototipositeclinica/#contato" target="_blank" class="project-item">
-                    <div class="project-emoji">🌐</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Site Simples
-                            <span class="project-cat">Site</span>
-                        </div>
-                        <div class="project-desc">Site institucional elegante para clínica, com agendamento direto via WhatsApp.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/Bellas-Pizzaria/#home" target="_blank" class="project-item">
-                    <div class="project-emoji">🍕</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Cardápio Virtual Inteligente
-                            <span class="project-cat">Cardápio</span>
-                        </div>
-                        <div class="project-desc">Cardápio interativo com carrinho e pedido automático enviado via WhatsApp.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/Convite-Digital/#detalhes" target="_blank" class="project-item">
-                    <div class="project-emoji">🎉</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Convite Especial para Eventos
-                            <span class="project-cat">Evento</span>
-                        </div>
-                        <div class="project-desc">Convite digital com contagem regressiva, confirmação de presença e exportação em Excel.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/Organizador-de-Festas-e-Eventos/#confirmar" target="_blank" class="project-item">
-                    <div class="project-emoji">🥩</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Lista Churrasco da Família
-                            <span class="project-cat">Colaborativo</span>
-                        </div>
-                        <div class="project-desc">Organizador colaborativo onde cada um escolhe o que trazer, sem duplicar itens.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/Lista-de-Presentes/#contato" target="_blank" class="project-item">
-                    <div class="project-emoji">🎁</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Lista de Presentes Virtual
-                            <span class="project-cat">Lista</span>
-                        </div>
-                        <div class="project-desc">Lista inteligente com cotas coletivas — ninguém dá presente repetido.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/controledeferramentassaude/" target="_blank" class="project-item">
-                    <div class="project-emoji">🔗</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Organização de Links
-                            <span class="project-cat">Organização</span>
-                        </div>
-                        <div class="project-desc">Central de ferramentas e links essenciais, tudo organizado em um só lugar.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/painelcensoibgedistritoeldorado/" target="_blank" class="project-item">
-                    <div class="project-emoji">📊</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Painel de Dados IBGE
-                            <span class="project-cat">Dashboard</span>
-                        </div>
-                        <div class="project-desc">Dashboard interativo com dados do Censo IBGE do Distrito Eldorado.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/ociconsolidado/" target="_blank" class="project-item">
-                    <div class="project-emoji">📈</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Painel Executivo OCI
-                            <span class="project-cat">Executivo</span>
-                        </div>
-                        <div class="project-desc">Painel consolidado com visão executiva dos indicadores OCI.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/saudecontatosubs/" target="_blank" class="project-item">
-                    <div class="project-emoji">📞</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Lista Telefônica Virtual
-                            <span class="project-cat">Contatos</span>
-                        </div>
-                        <div class="project-desc">Agenda telefônica completa da rede de saúde, com busca rápida e intuitiva.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/saudepaginafluxodaregula-o/" target="_blank" class="project-item">
-                    <div class="project-emoji">📄</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Resumo de Documentos
-                            <span class="project-cat">Documentos</span>
-                        </div>
-                        <div class="project-desc">Página com fluxo da regulação em saúde — toda a informação centralizada.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://portifolio.datadeshsolucoes.workers.dev/" target="_blank" class="project-item">
-                    <div class="project-emoji">🎨</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Portfólio Virtual
-                            <span class="project-cat">Portfólio</span>
-                        </div>
-                        <div class="project-desc">Vitrine completa com todos os serviços da DataDesh Soluções Digitais.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://curriculo.datadeshsolucoes.workers.dev/" target="_blank" class="project-item">
-                    <div class="project-emoji">📝</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Currículo Virtual
-                            <span class="project-cat">Currículo</span>
-                        </div>
-                        <div class="project-desc">Currículo digital moderno e interativo da Ana Desenvolvedora.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://anadesenvolvedora.github.io/Ferramenta-OCI/" target="_blank" class="project-item">
-                    <div class="project-emoji">🔐</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Ferramenta Inteligente de Análise
-                            <span class="project-cat">Sistema</span>
-                        </div>
-                        <div class="project-desc">Sistema completo com login, senha, dashboards e lógica personalizada.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-                <a href="https://docs.google.com/spreadsheets/d/12LOIIdR6bSkS1vV2o6984K1UvUsMGrHIg6z0xcSCpAs/edit?gid=1423732641#gid=1423732641" target="_blank" class="project-item">
-                    <div class="project-emoji">📑</div>
-                    <div class="project-content">
-                        <div class="project-name">
-                            Painel Automatizado em Planilhas
-                            <span class="project-cat">Planilha</span>
-                        </div>
-                        <div class="project-desc">Automação completa no Google Sheets com fórmulas, scripts e dashboards.</div>
-                    </div>
-                    <div class="project-cta">
-                        <span>Clique aqui</span>
-                        <span class="project-arrow">→</span>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CATÁLOGO -->
-    <section class="section">
-        <div class="container">
-            <div class="catalog-box">
-                <div class="catalog-content">
-                    <span class="catalog-emoji">📚</span>
-                    <h2 class="catalog-title">Catálogo completo de serviços</h2>
-                    <p class="catalog-desc">
-                        Todos os serviços da DataDesh Soluções Digitais organizados em um só lugar. Descubra qual solução combina com seu desafio.
-                    </p>
-                    <a href="https://datadeshsolucoes-design.github.io/catalago-sem-precos-DataDesh/" target="_blank" class="catalog-btn">
-                        Ver Catálogo Completo →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <!-- CONTATOS -->
+    <!-- CONTATOS -->
     <section class="section">
         <div class="container">
             <div class="section-head">
@@ -1109,6 +923,38 @@
                         <div class="contact-val">Ana Desenvolvedora</div>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section" id="projetos">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-label">Portfólio</div>
+                <h2 class="section-title">Projetos que já criei</h2>
+            </div>
+
+            <div class="projects-list" id="projectsList">
+                <!-- Preenchido via JS pra adicionar efeito spotlight -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="section">
+        <div class="container">
+            <div class="catalog-box">
+                <div class="catalog-content">
+                    <span class="catalog-emoji">📚</span>
+                    <h2 class="catalog-title">Catálogo completo de serviços</h2>
+                    <p class="catalog-desc">
+                        Todos os serviços da DataDesh Soluções Digitais organizados em um só lugar. Descubra qual solução combina com seu desafio.
+                    </p>
+                    <a href="https://datadeshsolucoes-design.github.io/catalago-sem-precos-DataDesh/" target="_blank" class="catalog-btn">
+                        Ver Catálogo Completo →
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1160,6 +1006,139 @@
     <a href="https://wa.me/5531984987116" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">💬</a>
 
     <script>
+        // ===== PROJETOS =====
+        const PROJECTS = [
+            {
+                url: 'https://anadesenvolvedora.github.io/prototipositeclinica/#contato',
+                emoji: '🌐',
+                name: 'Site Simples',
+                cat: 'Site',
+                desc: 'Site institucional elegante para clínica, com agendamento direto via WhatsApp.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/Bellas-Pizzaria/#home',
+                emoji: '🍕',
+                name: 'Cardápio Virtual Inteligente',
+                cat: 'Cardápio',
+                desc: 'Cardápio interativo com carrinho e pedido automático enviado via WhatsApp.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/Convite-Digital/#detalhes',
+                emoji: '🎉',
+                name: 'Convite Especial para Eventos',
+                cat: 'Evento',
+                desc: 'Convite digital com contagem regressiva, confirmação de presença e exportação em Excel.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/Organizador-de-Festas-e-Eventos/#confirmar',
+                emoji: '🥩',
+                name: 'Lista Churrasco da Família',
+                cat: 'Colaborativo',
+                desc: 'Organizador colaborativo onde cada um escolhe o que trazer, sem duplicar itens.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/Lista-de-Presentes/#contato',
+                emoji: '🎁',
+                name: 'Lista de Presentes Virtual',
+                cat: 'Lista',
+                desc: 'Lista inteligente com cotas coletivas — ninguém dá presente repetido.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/controledeferramentassaude/',
+                emoji: '🔗',
+                name: 'Organização de Links',
+                cat: 'Organização',
+                desc: 'Central de ferramentas e links essenciais, tudo organizado em um só lugar.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/painelcensoibgedistritoeldorado/',
+                emoji: '📊',
+                name: 'Painel de Dados IBGE',
+                cat: 'Dashboard',
+                desc: 'Dashboard interativo com dados do Censo IBGE do Distrito Eldorado.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/ociconsolidado/',
+                emoji: '📈',
+                name: 'Painel Executivo OCI',
+                cat: 'Executivo',
+                desc: 'Painel consolidado com visão executiva dos indicadores OCI.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/saudecontatosubs/',
+                emoji: '📞',
+                name: 'Lista Telefônica Virtual',
+                cat: 'Contatos',
+                desc: 'Agenda telefônica completa da rede de saúde, com busca rápida e intuitiva.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/saudepaginafluxodaregula-o/',
+                emoji: '📄',
+                name: 'Resumo de Documentos',
+                cat: 'Documentos',
+                desc: 'Página com fluxo da regulação em saúde — toda a informação centralizada.'
+            },
+            {
+                url: 'https://portifolio.datadeshsolucoes.workers.dev/',
+                emoji: '🎨',
+                name: 'Portfólio Virtual',
+                cat: 'Portfólio',
+                desc: 'Vitrine completa com todos os serviços da DataDesh Soluções Digitais.'
+            },
+            {
+                url: 'https://curriculo.datadeshsolucoes.workers.dev/',
+                emoji: '📝',
+                name: 'Currículo Virtual',
+                cat: 'Currículo',
+                desc: 'Currículo digital moderno e interativo da Ana Desenvolvedora.'
+            },
+            {
+                url: 'https://anadesenvolvedora.github.io/Ferramenta-OCI/',
+                emoji: '🔐',
+                name: 'Ferramenta Inteligente de Análise',
+                cat: 'Sistema',
+                desc: 'Sistema completo com login, senha, dashboards e lógica personalizada.'
+            },
+            {
+                url: 'https://docs.google.com/spreadsheets/d/12LOIIdR6bSkS1vV2o6984K1UvUsMGrHIg6z0xcSCpAs/edit?gid=1423732641#gid=1423732641',
+                emoji: '📑',
+                name: 'Painel Automatizado em Planilhas',
+                cat: 'Planilha',
+                desc: 'Automação completa no Google Sheets com fórmulas, scripts e dashboards.'
+            }
+        ];
+
+        function renderProjects() {
+            const list = document.getElementById('projectsList');
+            list.innerHTML = PROJECTS.map((p, i) => `
+                <a href="${p.url}" target="_blank" class="project-item" style="animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.04}s both;">
+                    <div class="project-emoji">${p.emoji}</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            ${p.name}
+                            <span class="project-cat">${p.cat}</span>
+                        </div>
+                        <div class="project-desc">${p.desc}</div>
+                    </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
+            `).join('');
+
+            // Efeito spotlight (radial gradiente seguindo o mouse)
+            document.querySelectorAll('.project-item').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty('--mx', x + '%');
+                    card.style.setProperty('--my', y + '%');
+                });
+            });
+        }
+
         // Partículas
         function initParticles() {
             const c = document.getElementById('particles');
@@ -1180,6 +1159,7 @@
             }
         }
 
+        renderProjects();
         initParticles();
     </script>
 </body>
