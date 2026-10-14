@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Desenvolvedora | DataDesh Soluções Digitais</title>
+    <meta name="description" content="Ana Desenvolvedora - Resolvo problemas com tecnologia. Ferramentas virtuais, dashboards e soluções digitais personalizadas pela DataDesh Soluções Digitais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* Paleta profissional tech — azul/roxo/violeta */
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.3);
+            --secondary: #8b5cf6;
+            --secondary-glow: rgba(139, 92, 246, 0.3);
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.3);
+            --pink: #ec4899;
+            --mint: #10b981;
+            --mint-glow: rgba(16, 185, 129, 0.3);
+            --gold: #f59e0b;
+
+            --bg: #f8fafc;
+            --bg-2: #f1f5f9;
+            --surface: #ffffff;
+            --surface-2: #fefefe;
+            --border: rgba(15, 23, 42, 0.08);
+            --border-2: rgba(15, 23, 42, 0.12);
+            --border-hover: rgba(15, 23, 42, 0.2);
+
+            --text: #0f172a;
+            --text-2: #1e293b;
+            --text-dim: #475569;
+            --text-muted: #94a3b8;
+
+            --green: #25d366;
+            --green-dark: #128c7e;
+
+            --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.1);
+            --shadow-xl: 0 30px 80px rgba(15, 23, 42, 0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* CURSOR */
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s;
+            mix-blend-mode: multiply;
+        }
+
+        .cursor-ring {
+            width: 40px; height: 40px;
+            border: 1.5px solid rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s, height 0.3s;
+        }
+
+        .cursor-ring.hover { width: 70px; height: 70px; border-color: var(--primary); }
+
+        @media (max-width: 900px) { .cursor-dot, .cursor-ring { display: none; } }
+
+        /* FUNDO */
+        .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .bg-gradient-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; }
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #c7d2fe 0%, transparent 70%); top: -200px; left: -100px; animation: float-orb-1 22s ease-in-out infinite; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #ddd6fe 0%, transparent 70%); bottom: -100px; right: -100px; animation: float-orb-2 26s ease-in-out infinite; }
+        .orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #a5f3fc 0%, transparent 70%); top: 40%; left: 40%; animation: float-orb-3 30s ease-in-out infinite; }
+        .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #fbcfe8 0%, transparent 70%); top: 60%; right: 10%; animation: float-orb-1 24s ease-in-out infinite; }
+
+        @keyframes float-orb-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, 80px) scale(1.15); }
+            66% { transform: translate(50px, -50px) scale(0.9); }
+        }
+        @keyframes float-orb-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-100px, -80px) scale(1.1); }
+        }
+        @keyframes float-orb-3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-80px, 60px) scale(1.2); }
+        }
+
+        .bg-grid {
+            position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+        }
+
+        .particles { position: absolute; inset: 0; pointer-events: none; }
+        .particle {
+            position: absolute; border-radius: 50%; opacity: 0;
+            animation: particle-float linear infinite;
+        }
+        @keyframes particle-float {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1.3); }
+        }
+
+        /* NAVBAR */
+        nav.navbar {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; padding: 10px 10px 10px 22px;
+            display: flex; align-items: center; gap: 40px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        nav.navbar.scrolled {
+            top: 12px; padding: 8px 8px 8px 20px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--text);
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em;
+        }
+
+        .nav-logo-icon {
+            width: 36px; height: 36px; border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: white; font-weight: 800;
+            box-shadow: 0 4px 14px var(--primary-glow);
+            transition: transform 0.4s;
+        }
+
+        .nav-logo:hover .nav-logo-icon { transform: rotate(-15deg) scale(1.08); }
+
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a {
+            padding: 8px 16px; color: var(--text-dim); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; border-radius: 100px; transition: all 0.3s;
+        }
+        .nav-links a:hover { color: var(--text); background: rgba(15, 23, 42, 0.05); }
+
+        .nav-cta {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; border: none; border-radius: 100px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.88rem;
+            cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+            box-shadow: 0 6px 20px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            display: flex; align-items: center; gap: 6px;
+            text-decoration: none;
+        }
+
+        .nav-cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .nav-cta:hover::before { opacity: 1; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--primary-glow); }
+        .nav-cta span { position: relative; z-index: 1; }
+
+        .mobile-toggle {
+            display: none; background: rgba(15, 23, 42, 0.05);
+            border: 1px solid var(--border); width: 40px; height: 40px;
+            border-radius: 12px; color: var(--text); font-size: 1.2rem;
+            cursor: pointer; align-items: center; justify-content: center;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 150px 6% 100px;
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px;
+            align-items: center; max-width: 1500px; margin: 0 auto;
+        }
+
+        .hero-left { animation: hero-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+        @keyframes hero-in {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 8px 18px 8px 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-2); border-radius: 100px;
+            font-size: 0.85rem; color: var(--text-dim); margin-bottom: 26px;
+            box-shadow: var(--shadow-xs); backdrop-filter: blur(10px);
+        }
+
+        .hero-badge-dot {
+            width: 26px; height: 26px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--mint), var(--accent));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; animation: pulse-dot 2s infinite; color: white; font-weight: 700;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 var(--mint-glow); }
+            50% { box-shadow: 0 0 0 8px transparent; }
+        }
+
+        .hero h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+            font-weight: 800; line-height: 1.02; letter-spacing: -0.04em;
+            margin-bottom: 24px; color: var(--text);
+        }
+
+        .hero h1 .line { display: block; overflow: hidden; }
+        .hero h1 .line > span { display: inline-block; animation: line-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero h1 .line:nth-child(1) > span { animation-delay: 0.1s; }
+        .hero h1 .line:nth-child(2) > span { animation-delay: 0.2s; }
+        .hero h1 .line:nth-child(3) > span { animation-delay: 0.3s; }
+
+        @keyframes line-rise {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-move 6s ease infinite;
+        }
+
+        @keyframes gradient-move {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-tagline {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-dim);
+            max-width: 540px; margin-bottom: 34px; line-height: 1.75;
+        }
+
+        .hero-sub strong { color: var(--text); font-weight: 600; }
+
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+
+        .btn {
+            padding: 16px 30px; border-radius: 100px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.98rem;
+            cursor: pointer; border: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex; align-items: center; gap: 10px;
+            text-decoration: none; position: relative; overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 30px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 45px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        .btn-primary::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .btn-primary:hover::after { opacity: 1; }
+        .btn-primary > * { position: relative; z-index: 1; }
+
+        .btn-whats {
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whats:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.9); color: var(--text);
+            border: 1px solid var(--border-2); box-shadow: var(--shadow-sm);
+        }
+        .btn-ghost:hover {
+            background: white; border-color: var(--border-hover);
+            transform: translateY(-4px); box-shadow: var(--shadow-md);
+        }
+
+        .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+        .hero-stat-value {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2rem; font-weight: 800;
+            letter-spacing: -0.03em; line-height: 1; color: var(--text);
+        }
+        .hero-stat-label {
+            font-size: 0.72rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-top: 6px; font-weight: 600;
+        }
+
+        /* HERO VISUAL */
+        .hero-right {
+            position: relative;
+            animation: hero-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+
+        .hero-photo-wrap {
+            position: relative;
+            max-width: 480px;
+            margin-left: auto;
+            perspective: 1500px;
+        }
+
+        .hero-photo-card {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 12px rgba(15, 23, 42, 0.06),
+                0 40px 80px rgba(99, 102, 241, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            transition: transform 0.15s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1 / 1.1;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+        }
+
+        .hero-photo-fallback {
+            width: 100%;
+            aspect-ratio: 1 / 1.1;
+            background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        .photo-badge {
+            position: absolute; bottom: 20px; left: 20px; right: 20px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        }
+
+        .photo-badge-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800; font-size: 1.15rem;
+            letter-spacing: -0.02em; color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .photo-badge-role {
+            font-size: 0.8rem; color: var(--text-dim);
+            display: flex; align-items: center; gap: 6px;
+        }
+
+        .photo-badge-role .dot {
+            width: 6px; height: 6px; background: var(--mint); border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        .floating-tag {
+            position: absolute;
+            padding: 10px 16px;
+            background: white;
+            border: 1px solid var(--border-2);
+            border-radius: 14px;
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--text);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+            animation: float-tag 5s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .floating-tag .emoji {
+            font-size: 1.1rem;
+        }
+
+        .floating-tag-1 { top: 8%; left: -8%; animation-delay: 0s; }
+        .floating-tag-2 { bottom: 22%; right: -10%; animation-delay: -2s; }
+        .floating-tag-3 { top: 45%; right: -6%; animation-delay: -3.5s; }
+
+        @keyframes float-tag {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        /* SOBRE / QUEM SOU */
+        .section {
+            padding: 110px 6%; position: relative; z-index: 1;
+            max-width: 1500px; margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-2); border-radius: 100px;
+            font-size: 0.72rem; font-weight: 600; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            margin-bottom: 22px; box-shadow: var(--shadow-xs);
+        }
+
+        .section-label-dot {
+            width: 6px; height: 6px; background: var(--primary); border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        .section-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+            font-weight: 800; line-height: 1.05; letter-spacing: -0.04em;
+            margin-bottom: 20px; max-width: 900px; color: var(--text);
+        }
+
+        .section-sub {
+            font-size: 1.08rem; color: var(--text-dim);
+            max-width: 680px; margin-bottom: 56px; line-height: 1.7;
+        }
+
+        /* FRASE IMPACTO */
+        .impact-section {
+            padding: 80px 6%;
+            position: relative; z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .impact-box {
+            padding: 70px 60px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(139, 92, 246, 0.06));
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .impact-box::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.1), transparent 40%);
+            pointer-events: none;
+        }
+
+        .impact-question {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 12px;
+            position: relative; z-index: 1;
+        }
+
+        .impact-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            position: relative; z-index: 1;
+            color: var(--text);
+        }
+
+        .impact-title .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-move 6s ease infinite;
+        }
+
+        .impact-desc {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.75;
+            position: relative; z-index: 1;
+        }
+
+        /* SOBRE MIM */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 12px rgba(15, 23, 42, 0.06),
+                0 30px 60px rgba(99, 102, 241, 0.12);
+            aspect-ratio: 1 / 1.15;
+        }
+
+        .about-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-photo::before {
+            content: '';
+            position: absolute;
+            top: -15px; left: -15px; right: 15px; bottom: 15px;
+            border: 2px solid var(--primary);
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .about-content h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 22px;
+            color: var(--text);
+        }
+
+        .about-content h2 .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content p {
+            color: var(--text-dim);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .about-content p strong { color: var(--text); font-weight: 600; }
+
+        .about-tags {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-top: 26px;
+        }
+
+        .about-tag {
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* SERVIÇOS / O QUE FAÇO */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 36px 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(99, 102, 241, 0.08), transparent 60%);
+            opacity: 0; transition: opacity 0.5s; pointer-events: none;
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 60px; height: 60px;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 22px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            transition: transform 0.5s;
+            position: relative; z-index: 1;
+        }
+
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(-6deg); }
+
+        .service-card h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.25rem; font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 12px;
+            position: relative; z-index: 1; color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            position: relative; z-index: 1;
+        }
+
+        /* PORTFÓLIO / PROTÓTIPOS */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex; flex-direction: column;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(99, 102, 241, 0.06), transparent 60%);
+            opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+        }
+
+        .portfolio-card:hover::before { opacity: 1; }
+
+        .portfolio-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-preview {
+            height: 180px;
+            background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .portfolio-preview::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .portfolio-preview-icon {
+            font-size: 3.5rem;
+            position: relative; z-index: 1;
+            filter: drop-shadow(0 8px 20px rgba(99, 102, 241, 0.3));
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-card:hover .portfolio-preview-icon {
+            transform: scale(1.15) rotate(-8deg);
+        }
+
+        .portfolio-badge {
+            position: absolute; top: 14px; right: 14px;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 100px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .portfolio-body {
+            padding: 22px;
+            display: flex; flex-direction: column;
+            flex: 1;
+            position: relative; z-index: 2;
+        }
+
+        .portfolio-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.1rem; font-weight: 700;
+            letter-spacing: -0.02em; margin-bottom: 8px;
+            color: var(--text);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .portfolio-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .portfolio-link {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: gap 0.3s;
+        }
+
+        .portfolio-card:hover .portfolio-link { gap: 8px; }
+
+        .portfolio-link-arrow {
+            transition: transform 0.3s;
+        }
+
+        .portfolio-card:hover .portfolio-link-arrow {
+            transform: translateX(4px);
+        }
+
+        /* CATÁLOGO DESTAQUE */
+        .catalog-section {
+            padding: 100px 6%;
+            position: relative; z-index: 1;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .catalog-box {
+            padding: 70px 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+            box-shadow: 0 30px 80px var(--primary-glow);
+        }
+
+        .catalog-box::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.25), transparent 40%);
+            pointer-events: none;
+        }
+
+        .catalog-box::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.4), transparent),
+                radial-gradient(2px 2px at 90% 80%, rgba(255, 255, 255, 0.4), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.6), transparent);
+            pointer-events: none;
+        }
+
+        .catalog-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 20px;
+            position: relative; z-index: 1;
+            animation: wiggle 4s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+
+        .catalog-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: block;
+            margin-bottom: 10px;
+            position: relative; z-index: 1;
+        }
+
+        .catalog-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            position: relative; z-index: 1;
+        }
+
+        .catalog-desc {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 620px;
+            margin: 0 auto 34px;
+            line-height: 1.7;
+            position: relative; z-index: 1;
+        }
+
+        .catalog-btn {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 18px 38px;
+            background: white;
+            color: var(--primary);
+            border-radius: 100px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; z-index: 1;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .catalog-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CONTATO */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 54px; height: 54px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+            transition: transform 0.4s;
+        }
+
+        .contact-card:hover .contact-icon { transform: scale(1.1) rotate(-8deg); }
+
+        .contact-icon-wpp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .contact-icon-email { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+        .contact-icon-insta { background: linear-gradient(135deg, #e1306c, #f77737); }
+        .contact-icon-git { background: linear-gradient(135deg, #24292e, #57606a); }
+
+        .contact-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .contact-value {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        /* INFO EMPRESA */
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(139, 92, 246, 0.04));
+            border: 1px solid rgba(99, 102, 241, 0.12);
+            border-radius: 32px;
+            margin-top: 20px;
+        }
+
+        .company-info-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .company-info-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .company-info-value {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+            color: var(--text);
+        }
+
+        .company-info-value small {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            margin-top: 4px;
+            letter-spacing: 0;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 6% 30px;
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+            background: rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-sub {
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.7;
+        }
+
+        footer .heart {
+            color: var(--primary);
+            animation: heart-beat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heart-beat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.25); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.15); }
+        }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem;
+            text-decoration: none;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4), 0 4px 12px rgba(15, 23, 42, 0.1);
+            z-index: 998;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(15, 23, 42, 0.1);
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 24px;
+            border: 2px solid rgba(37, 211, 102, 0.4);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 130px 6% 80px; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-actions, .hero-stats { justify-content: center; }
+            .hero-photo-wrap { margin: 0 auto; }
+            .floating-tag-1 { left: 0; }
+            .floating-tag-2 { right: 0; }
+            .floating-tag-3 { right: 0; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-photo { max-width: 400px; margin: 0 auto; }
+        }
+
+        @media (max-width: 900px) {
+            nav.navbar { padding: 10px 10px 10px 16px; gap: 20px; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .nav-cta { display: none; }
+            .impact-box { padding: 50px 30px; border-radius: 28px; }
+            .catalog-box { padding: 50px 30px; border-radius: 28px; }
+            .company-info { padding: 20px; }
+        }
+
+        @media (max-width: 600px) {
+            .section { padding: 70px 5%; }
+            .hero { padding: 110px 5% 60px; }
+            .impact-section, .catalog-section { padding: 50px 5%; }
+            .floating-tag { display: none; }
+            .company-info-item { padding: 10px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 5px; border: 2px solid var(--bg);
+        }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.5); }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <div class="bg-layer">
+        <div class="bg-gradient-orb orb-1"></div>
+        <div class="bg-gradient-orb orb-2"></div>
+        <div class="bg-gradient-orb orb-3"></div>
+        <div class="bg-gradient-orb orb-4"></div>
+        <div class="bg-grid"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">A</div>
+            <span>Ana Dev</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">O que faço</a></li>
+            <li><a href="#portfolio">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <a href="https://wa.me/5531984987116" target="_blank" class="nav-cta">
+            <span>💬 Falar comigo</span>
+        </a>
+        <button class="mobile-toggle" onclick="toggleMobile()">☰</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-badge">
+                <div class="hero-badge-dot">✓</div>
+                <span>Disponível para novos projetos</span>
+            </div>
+
+            <h1>
+                <span class="line"><span>Olá, eu sou</span></span>
+                <span class="line"><span class="gradient-text">Ana Desenvolvedora</span></span>
+                <span class="line"><span>e resolvo problemas.</span></span>
+            </h1>
+
+            <span class="hero-tagline">✨ com ferramentas digitais sob medida</span>
+
+            <p class="hero-sub">
+                Crio <strong>ferramentas virtuais, planilhas inteligentes, dashboards e sistemas personalizados</strong> que resolvem problemas reais do seu negócio. Do site institucional à automação completa — sua dor vira solução.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://wa.me/5531984987116" target="_blank" class="btn btn-whats">
+                    <span>💬</span> <span>Conversar no WhatsApp</span>
+                </a>
+                <a href="#portfolio" class="btn btn-ghost">
+                    <span>👀</span> <span>Ver Projetos</span>
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">+15</div>
+                    <div class="hero-stat-label">Projetos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">100%</div>
+                    <div class="hero-stat-label">Sob medida</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">24h</div>
+                    <div class="hero-stat-label">Resposta</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-photo-wrap" id="heroPhotoWrap">
+                <div class="hero-photo-card">
+                    <img src="https://raw.githubusercontent.com/datadeshsolucoes-design/Servicos-digitais/main/foto%20(1).jpg" 
+                         alt="Ana Desenvolvedora" 
+                         class="hero-photo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hero-photo-fallback" style="display: none;">👩‍💻</div>
+                    <div class="photo-badge">
+                        <div class="photo-badge-name">Ana</div>
+                        <div class="photo-badge-role">
+                            <span class="dot"></span>
+                            <span>Desenvolvedora · DataDesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-tag floating-tag-1">
+                    <span class="emoji">💡</span>
+                    <span>Resolvo problemas</span>
+                </div>
+                <div class="floating-tag floating-tag-2">
+                    <span class="emoji">⚡</span>
+                    <span>Código sob medida</span>
+                </div>
+                <div class="floating-tag floating-tag-3">
+                    <span class="emoji">📊</span>
+                    <span>Dados inteligentes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE DE IMPACTO -->
+    <section class="impact-section">
+        <div class="impact-box">
+            <span class="impact-question">qual a tarefa de uma desenvolvedora?</span>
+            <h2 class="impact-title">
+                <span class="highlight">Resolver Problemas.</span>
+            </h2>
+            <p class="impact-desc">
+                Não se trata só de escrever código bonito. Trata-se de entender a sua dor, desenhar a solução mais simples possível e entregar uma ferramenta que <strong>realmente funcione</strong> no seu dia a dia. Planilhas que trabalham por você. Dashboards que mostram o que importa. Sistemas que automatizam o que era manual.
+            </p>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+        <div class="section-label">
+            <span class="section-label-dot"></span>
+            <span>Sobre mim</span>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-photo">
+                <img src="https://raw.githubusercontent.com/datadeshsolucoes-design/Servicos-digitais/main/foto%20(1).jpg" 
+                     alt="Ana Desenvolvedora"
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22460%22%3E%3Crect fill=%22%23e0e7ff%22 width=%22400%22 height=%22460%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%22120%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E👩‍💻%3C/text%3E%3C/svg%3E'">
+            </div>
+
+            <div class="about-content">
+                <h2>Muito prazer, sou <span class="highlight">Ana</span></h2>
+                <p>
+                    Sou desenvolvedora e fundadora da <strong>DataDesh Soluções Digitais</strong>, uma empresa dedicada a transformar problemas complexos em ferramentas simples e elegantes.
+                </p>
+                <p>
+                    Meu trabalho vai muito além de programar: eu <strong>escuto, entendo e desenho</strong> a solução ideal para o seu negócio. Seja uma planilha automatizada no Google, um dashboard interativo ou um sistema web completo com login e banco de dados — eu construo do zero, sob medida pra você.
+                </p>
+                <p>
+                    Acredito que tecnologia boa é aquela que <strong>ninguém precisa aprender a usar</strong>. Por isso minhas ferramentas são intuitivas, bonitas e resolvem de verdade.
+                </p>
+
+                <div class="about-tags">
+                    <span class="about-tag">🎯 Sob medida</span>
+                    <span class="about-tag">⚡ Ágil</span>
+                    <span class="about-tag">💡 Inovador</span>
+                    <span class="about-tag">🤝 Suporte humano</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section" id="servicos">
+        <div class="section-label">
+            <span class="section-label-dot"></span>
+            <span>O que eu faço</span>
+        </div>
+        <h2 class="section-title">Soluções digitais que <span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">trabalham por você</span></h2>
+        <p class="section-sub">
+            Cada negócio tem uma dor diferente. Aqui estão as principais formas como eu resolvo:
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Sites & Landing Pages</h3>
+                <p>Sites institucionais, portfólios e páginas de vendas bonitas, rápidas e que convertem visitantes em clientes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Dashboards Inteligentes</h3>
+                <p>Painéis visuais que transformam dados em decisões. Enxergue seu negócio em tempo real.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Planilhas Automatizadas</h3>
+                <p>Planilhas no Google Sheets com fórmulas, scripts e automações que fazem o trabalho pesado por você.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Ferramentas Web Sob Medida</h3>
+                <p>Sistemas com login, cadastro, banco de dados e lógica personalizada para o seu processo.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎁</div>
+                <h3>Listas, Cardápios & Convites</h3>
+                <p>Cardápios virtuais, listas de presentes, convites de eventos — interativos e com pedido via WhatsApp.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔗</div>
+                <h3>Organização & Automação</h3>
+                <p>Centralize links, contatos, documentos e fluxos. Chega de perder tempo procurando informação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFÓLIO -->
+    <section class="section" id="portfolio">
+        <div class="section-label">
+            <span class="section-label-dot"></span>
+            <span>Portfólio</span>
+        </div>
+        <h2 class="section-title">Projetos <span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">criados com carinho</span></h2>
+        <p class="section-sub">
+            Clique em cada card para explorar o projeto completo. Todos são reais, funcionais e prontos pra usar.
+        </p>
+
+        <div class="portfolio-grid">
+            <a href="https://anadesenvolvedora.github.io/prototipositeclinica/#contato" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🦷</div>
+                    <div class="portfolio-badge">Site</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🌐 Site Simples</div>
+                    <div class="portfolio-desc">Site institucional elegante para clínica odontológica, com agendamento via WhatsApp.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/Bellas-Pizzaria/#home" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🍕</div>
+                    <div class="portfolio-badge">Cardápio</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🍕 Cardápio Virtual Inteligente</div>
+                    <div class="portfolio-desc">Cardápio interativo com carrinho e pedido automático via WhatsApp.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/Convite-Digital/#detalhes" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🎉</div>
+                    <div class="portfolio-badge">Evento</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🎉 Convite Especial para Eventos</div>
+                    <div class="portfolio-desc">Convite digital com contagem regressiva, confirmação e exportação em Excel.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/Organizador-de-Festas-e-Eventos/#confirmar" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🥩</div>
+                    <div class="portfolio-badge">Colaborativo</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🥩 Lista Churrasco da Família</div>
+                    <div class="portfolio-desc">Organizador colaborativo: cada um escolhe o que traz, sem duplicar.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/Lista-de-Presentes/#contato" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🎁</div>
+                    <div class="portfolio-badge">Cotas</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🎁 Lista de Presentes Virtual</div>
+                    <div class="portfolio-desc">Lista inteligente com cotas coletivas — ninguém dá presente repetido.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/controledeferramentassaude/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🔗</div>
+                    <div class="portfolio-badge">Organização</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🔗 Organização de Links</div>
+                    <div class="portfolio-desc">Central de ferramentas e links essenciais para o setor de saúde.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/painelcensoibgedistritoeldorado/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📊</div>
+                    <div class="portfolio-badge">Dashboard</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📊 Painel de Dados — Censo IBGE</div>
+                    <div class="portfolio-desc">Dashboard interativo com dados do Censo IBGE do Distrito Eldorado.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/ociconsolidado/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📈</div>
+                    <div class="portfolio-badge">Executivo</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📈 Painel Executivo — OCI</div>
+                    <div class="portfolio-desc">Painel consolidado com visão executiva dos indicadores OCI.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/saudecontatosubs/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📞</div>
+                    <div class="portfolio-badge">Contatos</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📞 Lista Telefônica Virtual</div>
+                    <div class="portfolio-desc">Agenda telefônica completa da rede de saúde, com busca rápida.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/saudepaginafluxodaregula-o/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📄</div>
+                    <div class="portfolio-badge">Documentos</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📄 Resumo de Documentos</div>
+                    <div class="portfolio-desc">Página com fluxo da regulação em saúde — tudo em um só lugar.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://portifolio.datadeshsolucoes.workers.dev/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🎨</div>
+                    <div class="portfolio-badge">Portfólio</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🎨 Portfólio Virtual</div>
+                    <div class="portfolio-desc">Vitrine completa com todos os serviços da DataDesh Soluções Digitais.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://curriculo.datadeshsolucoes.workers.dev/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📝</div>
+                    <div class="portfolio-badge">Currículo</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📝 Currículo Virtual</div>
+                    <div class="portfolio-desc">Currículo digital moderno e interativo da Ana Desenvolvedora.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://anadesenvolvedora.github.io/Ferramenta-OCI/" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">🔐</div>
+                    <div class="portfolio-badge">Sistema</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">🔐 Ferramenta Inteligente de Análise</div>
+                    <div class="portfolio-desc">Sistema completo com login, senha, dashboards e lógica personalizada.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://docs.google.com/spreadsheets/d/12LOIIdR6bSkS1vV2o6984K1UvUsMGrHIg6z0xcSCpAs/edit?gid=1423732641#gid=1423732641" target="_blank" class="portfolio-card">
+                <div class="portfolio-preview">
+                    <div class="portfolio-preview-icon">📑</div>
+                    <div class="portfolio-badge">Planilha</div>
+                </div>
+                <div class="portfolio-body">
+                    <div class="portfolio-title">📑 Painel Automatizado em Planilhas</div>
+                    <div class="portfolio-desc">Automação completa no Google Sheets — fórmulas, scripts e dashboards.</div>
+                    <div class="portfolio-link">
+                        <span>Ver projeto</span>
+                        <span class="portfolio-link-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DESTAQUE -->
+    <section class="catalog-section" id="catalogo">
+        <div class="catalog-box">
+            <span class="catalog-emoji">📚</span>
+            <span class="catalog-label">conheça tudo o que posso fazer por você</span>
+            <h2 class="catalog-title">Catálogo Completo de Serviços</h2>
+            <p class="catalog-desc">
+                Todos os serviços da DataDesh Soluções Digitais organizados em um só lugar. Descubra qual solução combina com o seu desafio.
+            </p>
+            <a href="https://datadeshsolucoes-design.github.io/catalago-sem-precos-DataDesh/" target="_blank" class="catalog-btn">
+                <span>📖</span>
+                <span>Ver Catálogo de Serviços</span>
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section" id="contato">
+        <div class="section-label">
+            <span class="section-label-dot"></span>
+            <span>Vamos conversar</span>
+        </div>
+        <h2 class="section-title">Pronto pra resolver <span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">seu problema?</span></h2>
+        <p class="section-sub">
+            Me chama em qualquer canal. Respondo rápido e a primeira conversa é sempre sem compromisso. 💬
+        </p>
+
+        <div class="contact-grid">
+            <a href="https://wa.me/5531984987116" target="_blank" class="contact-card">
+                <div class="contact-icon contact-icon-wpp">💬</div>
+                <div class="contact-label">WhatsApp</div>
+                <div class="contact-value">(31) 98498-7116</div>
+            </a>
+
+            <a href="mailto:datadshsolucoes@gmail.com" class="contact-card">
+                <div class="contact-icon contact-icon-email">✉️</div>
+                <div class="contact-label">E-mail</div>
+                <div class="contact-value">datadshsolucoes@gmail.com</div>
+            </a>
+
+            <a href="https://instagram.com/datadeshsolucoesdigitais" target="_blank" class="contact-card">
+                <div class="contact-icon contact-icon-insta">📷</div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-value">@datadeshsolucoesdigitais</div>
+            </a>
+
+            <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="contact-card">
+                <div class="contact-icon contact-icon-git">💻</div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">Ana Desenvolvedora</div>
+            </a>
+        </div>
+
+        <div class="company-info">
+            <div class="company-info-item">
+                <div class="company-info-label">Empresa</div>
+                <div class="company-info-value">DataDesh Soluções Digitais</div>
+            </div>
+            <div class="company-info-item">
+                <div class="company-info-label">CNPJ</div>
+                <div class="company-info-value">66.884.261/0001-20</div>
+            </div>
+            <div class="company-info-item">
+                <div class="company-info-label">Especialidade</div>
+                <div class="company-info-value">Soluções Digitais Sob Medida</div>
+            </div>
+            <div class="company-info-item">
+                <div class="company-info-label">Atendimento</div>
+                <div class="company-info-value">100% Online <small>Toda região do Brasil</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">Ana Desenvolvedora</div>
+        <div class="footer-sub">DataDesh Soluções Digitais</div>
+        <p>Feito com <span class="heart">❤</span> para resolver problemas com tecnologia</p>
+        <p style="margin-top: 8px;">© 2025 DataDesh Soluções Digitais · CNPJ 66.884.261/0001-20</p>
+        <p style="margin-top: 6px;">Todos os direitos reservados</p>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5531984987116" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // ===== CURSOR =====
+        function initCursor() {
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            if (!dot || !ring) return;
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', e => {
+                mx = e.clientX; my = e.clientY;
+                dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+            });
+            function animate() {
+                rx += (mx - rx) * 0.15;
+                ry += (my - ry) * 0.15;
+                ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            const hoverSelectors = 'a, button, .service-card, .portfolio-card, .contact-card, .catalog-btn, .btn, .nav-cta, .whatsapp-float';
+            document.querySelectorAll(hoverSelectors).forEach(el => {
+                el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+            });
+        }
+
+        // ===== PARTÍCULAS =====
+        function initParticles() {
+            const c = document.getElementById('particles');
+            if (!c) return;
+            for (let i = 0; i < 40; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.bottom = '-10px';
+                p.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                p.style.animationDelay = (Math.random() * 15) + 's';
+                p.style.background = ['#6366f1', '#8b5cf6', '#06b6d4', '#ec4899', '#10b981'][Math.floor(Math.random() * 5)];
+                c.appendChild(p);
+            }
+        }
+
+        // ===== 3D TILT =====
+        function init3D() {
+            const photoWrap = document.getElementById('heroPhotoWrap');
+            document.addEventListener('mousemove', e => {
+                const x = (e.clientX / window.innerWidth - 0.5);
+                const y = (e.clientY / window.innerHeight - 0.5);
+                if (photoWrap) {
+                    photoWrap.style.transform = `perspective(1500px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+                }
+            });
+
+            document.querySelectorAll('.service-card, .portfolio-card, .contact-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty('--mx', x + '%');
+                    card.style.setProperty('--my', y + '%');
+                });
+            });
+        }
+
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+        });
+
+        // ===== MOBILE MENU =====
+        function toggleMobile() {
+            const nav = document.querySelector('.nav-links');
+            if (nav.style.display === 'flex') nav.style.display = '';
+            else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '110%';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.backdropFilter = 'blur(30px)';
+                nav.style.padding = '20px';
+                nav.style.gap = '6px';
+                nav.style.borderRadius = '24px';
+                nav.style.border = '1px solid rgba(15, 23, 42, 0.08)';
+                nav.style.boxShadow = '0 20px 50px rgba(15, 23, 42, 0.1)';
+            }
+        }
+
+        // ===== INIT =====
+        function init() {
+            initCursor();
+            initParticles();
+            init3D();
+        }
+
+        init();
+    </script>
+</body>
+</html>
