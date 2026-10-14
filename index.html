@@ -3,51 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Desenvolvedora | Portfólio DataDesh</title>
-    <meta name="description" content="Portfólio de Ana Desenvolvedora — DataDesh Soluções Digitais. Sites, dashboards, ferramentas sob medida.">
+    <title>Ana Desenvolvedora | DataDesh Soluções Digitais</title>
+    <meta name="description" content="Portfólio Ana Desenvolvedora — DataDesh Soluções Digitais. Sites, dashboards e ferramentas sob medida.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --primary-glow: rgba(99, 102, 241, 0.35);
-            --secondary: #8b5cf6;
-            --secondary-glow: rgba(139, 92, 246, 0.35);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.4);
             --accent: #06b6d4;
-            --accent-glow: rgba(6, 182, 212, 0.35);
-            --pink: #ec4899;
-            --pink-glow: rgba(236, 72, 153, 0.35);
+            --accent-glow: rgba(6, 182, 212, 0.3);
             --mint: #10b981;
-            --gold: #f59e0b;
 
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --border: rgba(15, 23, 42, 0.08);
-            --border-2: rgba(15, 23, 42, 0.12);
-            --border-hover: rgba(15, 23, 42, 0.2);
+            --bg: #0a0a0f;
+            --bg-2: #12121a;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-hover: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-2: rgba(255, 255, 255, 0.14);
+            --border-hover: rgba(255, 255, 255, 0.25);
 
-            --text: #0f172a;
-            --text-dim: #475569;
-            --text-muted: #94a3b8;
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.65);
+            --text-muted: rgba(255, 255, 255, 0.4);
 
             --green: #25d366;
             --green-dark: #128c7e;
-
-            --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
-            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
-            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-            --shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.1);
-            --shadow-xl: 0 30px 80px rgba(15, 23, 42, 0.12);
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
@@ -56,7 +46,7 @@
             min-height: 100vh;
         }
 
-        /* ===== FUNDO ANIMADO ===== */
+        /* ===== FUNDO ===== */
         .bg-layer {
             position: fixed; inset: 0; z-index: 0;
             pointer-events: none; overflow: hidden;
@@ -65,37 +55,54 @@
         .bg-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.45;
+            filter: blur(140px);
+            opacity: 0.35;
         }
 
-        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #c7d2fe 0%, transparent 70%); top: -200px; left: -100px; animation: orb-float-1 22s ease-in-out infinite; }
-        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #ddd6fe 0%, transparent 70%); bottom: -100px; right: -100px; animation: orb-float-2 26s ease-in-out infinite; }
-        .orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #a5f3fc 0%, transparent 70%); top: 40%; left: 40%; animation: orb-float-3 30s ease-in-out infinite; }
-        .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #fbcfe8 0%, transparent 70%); top: 60%; right: 10%; animation: orb-float-1 24s ease-in-out infinite; }
+        .orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+            top: -200px; left: -100px;
+            animation: orb-float-1 24s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+            bottom: -100px; right: -100px;
+            animation: orb-float-2 28s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+            top: 45%; left: 40%;
+            opacity: 0.2;
+            animation: orb-float-3 32s ease-in-out infinite;
+        }
 
         @keyframes orb-float-1 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(100px, 80px) scale(1.15); }
-            66% { transform: translate(50px, -50px) scale(0.9); }
+            33% { transform: translate(80px, 60px) scale(1.15); }
+            66% { transform: translate(40px, -40px) scale(0.9); }
         }
         @keyframes orb-float-2 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-100px, -80px) scale(1.1); }
+            50% { transform: translate(-80px, -60px) scale(1.1); }
         }
         @keyframes orb-float-3 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-80px, 60px) scale(1.2); }
+            50% { transform: translate(-60px, 40px) scale(1.2); }
         }
 
         .bg-grid {
             position: absolute; inset: 0;
             background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 60px 60px;
-            mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+            mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
         }
 
         .particles { position: absolute; inset: 0; pointer-events: none; }
@@ -105,654 +112,572 @@
         }
         @keyframes particle-float {
             0% { opacity: 0; transform: translateY(0) scale(0); }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
             100% { opacity: 0; transform: translateY(-100vh) scale(1.3); }
         }
 
-        /* ===== NAVBAR SIMPLES ===== */
-        nav.navbar {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            z-index: 1000;
-            padding: 10px 14px 10px 20px;
-            display: flex; align-items: center; gap: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 5%;
+            position: relative;
+            z-index: 1;
         }
 
-        nav.navbar.scrolled {
-            top: 12px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
-        }
-
-        .nav-logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: var(--text);
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 800; font-size: 1rem; letter-spacing: -0.02em;
-        }
-
-        .nav-logo-icon {
-            width: 32px; height: 32px; border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; color: white; font-weight: 800;
-            box-shadow: 0 4px 14px var(--primary-glow);
-        }
-
-        .nav-links { display: flex; gap: 2px; list-style: none; }
-        .nav-links a {
-            padding: 8px 14px; color: var(--text-dim); text-decoration: none;
-            font-size: 0.88rem; font-weight: 500; border-radius: 100px; transition: all 0.3s;
-        }
-        .nav-links a:hover { color: var(--text); background: rgba(15, 23, 42, 0.05); }
-
-        .mobile-toggle {
-            display: none; background: rgba(15, 23, 42, 0.05);
-            border: 1px solid var(--border); width: 38px; height: 38px;
-            border-radius: 12px; color: var(--text); font-size: 1.15rem;
-            cursor: pointer; align-items: center; justify-content: center;
-        }
-
-        /* ===== HERO — DIRETO E PRÁTICO ===== */
+        /* ===== HERO / APRESENTAÇÃO ===== */
         .hero {
-            padding: 130px 6% 60px;
-            position: relative; z-index: 1;
-            max-width: 1200px; margin: 0 auto;
+            padding: 70px 0 50px;
             text-align: center;
+            animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 16px 6px 8px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid var(--border-2); border-radius: 100px;
-            font-size: 0.82rem; color: var(--text-dim); margin-bottom: 22px;
-            box-shadow: var(--shadow-xs);
-            animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        .hero-badge-dot {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--mint), var(--accent));
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; color: white; font-weight: 700;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            50% { box-shadow: 0 0 0 8px transparent; }
-        }
-
-        @keyframes hero-in {
+        @keyframes fade-up {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero h1 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: clamp(2.4rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            margin-bottom: 20px;
-            color: var(--text);
-            animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        .hero-photo-wrap {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 24px;
+            animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
         }
 
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            background-size: 200% 200%;
+        .hero-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            box-shadow: 
+                0 0 0 8px rgba(139, 92, 246, 0.1),
+                0 20px 50px rgba(139, 92, 246, 0.25);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 0 12px rgba(139, 92, 246, 0.15),
+                0 25px 60px rgba(139, 92, 246, 0.35);
+        }
+
+        .hero-photo-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            z-index: -1;
+            opacity: 0.6;
+            filter: blur(20px);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--mint);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-badge-dot {
+            width: 6px; height: 6px;
+            background: var(--mint);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 0 0 6px transparent; }
+        }
+
+        .hero h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradient-move 6s ease infinite;
-        }
-
-        @keyframes gradient-move {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         .hero-sub {
-            font-size: 1.15rem;
+            font-size: 1rem;
             color: var(--text-dim);
-            max-width: 620px;
-            margin: 0 auto 30px;
+            max-width: 560px;
+            margin: 0 auto 26px;
             line-height: 1.65;
-            animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+            font-weight: 400;
         }
 
-        .hero-sub strong {
-            color: var(--text); font-weight: 600;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ===== BOTÕES LINDOS E COMPACTOS ===== */
+        /* ===== BOTÕES ===== */
         .btn-row {
-            display: flex; gap: 12px; flex-wrap: wrap;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
             justify-content: center;
-            animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+            margin-bottom: 8px;
         }
 
         .btn {
-            padding: 13px 24px;
+            padding: 12px 22px;
             border-radius: 100px;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             cursor: pointer;
             border: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-flex; align-items: center; gap: 8px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
             position: relative;
             overflow: hidden;
             letter-spacing: -0.01em;
         }
 
-        .btn .ico { font-size: 1rem; }
-
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
-            box-shadow: 0 8px 22px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 24px var(--primary-glow);
         }
 
-        .btn-primary::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            opacity: 0; transition: opacity 0.4s;
-        }
-
-        .btn-primary:hover::before { opacity: 1; }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 14px 32px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 14px 32px var(--primary-glow);
         }
-        .btn-primary > * { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border-2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-ghost:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
 
         .btn-whats {
             background: linear-gradient(135deg, var(--green), var(--green-dark));
             color: white;
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
         }
 
         .btn-whats:hover {
             transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.45);
         }
 
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text);
-            border: 1px solid var(--border-2);
-            box-shadow: var(--shadow-sm);
+        /* ===== SEÇÕES ===== */
+        .section {
+            padding: 50px 0;
+            animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
-        .btn-ghost:hover {
-            background: white;
-            border-color: var(--border-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+        .section-head {
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        /* ===== INFO CARDS — CONTATO RÁPIDO ===== */
-        .quick-info {
-            padding: 40px 6% 60px;
-            position: relative; z-index: 1;
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 14px;
-            animation: hero-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-        }
-
-        .quick-card {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        .section-label {
+            display: inline-block;
+            padding: 5px 14px;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            display: flex; align-items: center; gap: 14px;
+            border-radius: 100px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        /* ===== CONTATOS ===== */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .contact-item {
+            padding: 16px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--shadow-sm);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .quick-card:hover {
-            background: white;
+        .contact-item:hover {
+            background: var(--surface-hover);
             border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
         }
 
-        .quick-icon {
-            width: 44px; height: 44px;
-            border-radius: 13px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem;
-            color: white;
+        .contact-ico {
+            width: 38px; height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
             flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
-            transition: transform 0.4s;
         }
 
-        .quick-card:hover .quick-icon { transform: scale(1.1) rotate(-8deg); }
+        .contact-ico-wpp { background: linear-gradient(135deg, #25d366, #128c7e); }
+        .contact-ico-email { background: linear-gradient(135deg, var(--primary), #6366f1); }
+        .contact-ico-insta { background: linear-gradient(135deg, #e1306c, #f77737); }
+        .contact-ico-git { background: linear-gradient(135deg, #24292e, #57606a); }
 
-        .quick-icon-wpp { background: linear-gradient(135deg, #25d366, #128c7e); }
-        .quick-icon-email { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
-        .quick-icon-insta { background: linear-gradient(135deg, #e1306c, #f77737); }
-        .quick-icon-git { background: linear-gradient(135deg, #24292e, #57606a); }
-
-        .quick-info-text {
+        .contact-txt {
             flex: 1;
             min-width: 0;
         }
 
-        .quick-info-label {
-            font-size: 0.7rem;
+        .contact-lbl {
+            font-size: 0.62rem;
             text-transform: uppercase;
-            letter-spacing: 1.3px;
+            letter-spacing: 1.2px;
             color: var(--text-muted);
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
-        .quick-info-value {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: -0.01em;
+        .contact-val {
+            font-size: 0.83rem;
+            font-weight: 600;
             color: var(--text);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* ===== SEÇÃO PROJETOS ===== */
-        .section {
-            padding: 70px 6%; position: relative; z-index: 1;
-            max-width: 1300px; margin: 0 auto;
+        /* ===== LISTA DE PROJETOS ===== */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .section-head {
-            text-align: center;
-            margin-bottom: 46px;
-        }
-
-        .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 5px 14px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid var(--border-2); border-radius: 100px;
-            font-size: 0.7rem; font-weight: 600; color: var(--text-dim);
-            text-transform: uppercase; letter-spacing: 1.5px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow-xs);
-        }
-
-        .section-label-dot {
-            width: 6px; height: 6px; background: var(--primary); border-radius: 50%;
-            box-shadow: 0 0 8px var(--primary-glow);
-        }
-
-        .section-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: clamp(1.7rem, 4vw, 2.8rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin-bottom: 14px;
-            color: var(--text);
-        }
-
-        .section-title .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-move 6s ease infinite;
-        }
-
-        .section-sub {
-            font-size: 1rem;
-            color: var(--text-dim);
-            max-width: 560px;
-            margin: 0 auto;
-        }
-
-        /* ===== GRID DE PROJETOS ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 16px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        .project-item {
+            padding: 18px 20px;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 22px;
-            padding: 22px;
-            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex; flex-direction: column;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: inherit;
         }
 
-        .project-card::before {
+        .project-item::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .project-card:hover::before { transform: scaleX(1); }
+        .project-item:hover::before { transform: scaleY(1); }
 
-        .project-card:hover {
-            background: white;
+        .project-item:hover {
+            background: var(--surface-hover);
             border-color: var(--border-hover);
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-top {
-            display: flex; align-items: center; gap: 12px;
-            margin-bottom: 16px;
+            transform: translateX(6px);
         }
 
         .project-emoji {
-            width: 46px; height: 46px;
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
-            border: 1px solid rgba(99, 102, 241, 0.15);
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
             flex-shrink: 0;
-            transition: transform 0.5s;
+            transition: transform 0.4s;
         }
 
-        .project-card:hover .project-emoji {
+        .project-item:hover .project-emoji {
             transform: scale(1.1) rotate(-8deg);
         }
 
-        .project-meta {
+        .project-content {
             flex: 1;
             min-width: 0;
         }
 
-        .project-cat {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--primary);
+        .project-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 0.98rem;
             font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--text);
             margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .project-badge {
+        .project-cat {
             display: inline-block;
             padding: 2px 8px;
             border-radius: 100px;
-            font-size: 0.62rem;
+            font-size: 0.6rem;
             font-weight: 700;
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--mint);
-            text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-left: 6px;
-        }
-
-        .project-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.08rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            line-height: 1.25;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            background: rgba(6, 182, 212, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(6, 182, 212, 0.2);
         }
 
         .project-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 18px;
-            flex: 1;
+            line-height: 1.5;
         }
 
-        .project-actions {
+        .project-cta {
             display: flex;
-            gap: 8px;
-            margin-top: auto;
-        }
-
-        /* ===== BOTÕES LINDOS DENTRO DOS CARDS ===== */
-        .btn-card {
-            flex: 1;
-            padding: 10px 16px;
-            border-radius: 100px;
-            font-family: 'Space Grotesk', sans-serif;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
             font-weight: 600;
-            font-size: 0.82rem;
-            cursor: pointer;
-            border: none;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: -0.01em;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: gap 0.3s;
+            white-space: nowrap;
         }
 
-        .btn-view {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 14px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        .project-item:hover .project-cta { gap: 10px; }
+
+        .project-arrow {
+            transition: transform 0.3s;
         }
 
-        .btn-view::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            opacity: 0; transition: opacity 0.35s;
-        }
+        .project-item:hover .project-arrow { transform: translateX(2px); }
 
-        .btn-view:hover::before { opacity: 1; }
-        .btn-view:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        }
-        .btn-view > * { position: relative; z-index: 1; }
-
-        .btn-demo {
-            background: rgba(15, 23, 42, 0.05);
-            color: var(--text);
-            border: 1px solid var(--border-2);
-        }
-
-        .btn-demo:hover {
-            background: rgba(15, 23, 42, 0.08);
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        /* ===== CATÁLOGO DESTAQUE ===== */
-        .catalog-section {
-            padding: 60px 6% 40px;
-            position: relative; z-index: 1;
-            max-width: 1200px; margin: 0 auto;
-        }
-
+        /* ===== CATÁLOGO ===== */
         .catalog-box {
-            padding: 50px 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 32px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 24px;
             position: relative;
             overflow: hidden;
             text-align: center;
-            color: white;
-            box-shadow: 0 30px 70px var(--primary-glow);
         }
 
         .catalog-box::before {
             content: '';
             position: absolute; inset: 0;
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15), transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.25), transparent 40%);
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.2), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.15), transparent 50%);
             pointer-events: none;
         }
 
-        .catalog-emoji {
-            font-size: 2.8rem;
-            display: block;
-            margin-bottom: 14px;
-            position: relative; z-index: 1;
-            animation: wiggle 4s ease-in-out infinite;
+        .catalog-content {
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-8deg); }
-            50% { transform: rotate(8deg); }
+        .catalog-emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 12px;
         }
 
         .catalog-title {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+            font-size: clamp(1.2rem, 2.8vw, 1.6rem);
             font-weight: 800;
             letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 14px;
-            position: relative; z-index: 1;
-        }
-
-        .catalog-desc {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 520px;
-            margin: 0 auto 26px;
-            line-height: 1.65;
-            position: relative; z-index: 1;
-        }
-
-        .catalog-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 15px 32px;
-            background: white;
-            color: var(--primary);
-            border-radius: 100px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; z-index: 1;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .catalog-btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
-        }
-
-        /* ===== INFO EMPRESA ===== */
-        .company-box {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 6% 60px;
-            position: relative; z-index: 1;
-        }
-
-        .company-inner {
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
-            border: 1px solid rgba(99, 102, 241, 0.12);
-            border-radius: 24px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .company-item {
-            text-align: center;
-        }
-
-        .company-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            font-weight: 600;
             margin-bottom: 8px;
-        }
-
-        .company-value {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: -0.01em;
             color: var(--text);
         }
 
-        .company-value small {
-            display: block;
-            font-size: 0.75rem;
+        .catalog-desc {
+            font-size: 0.9rem;
             color: var(--text-dim);
-            font-weight: 500;
-            margin-top: 3px;
-            letter-spacing: 0;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            padding: 40px 6% 24px;
-            border-top: 1px solid var(--border);
-            position: relative; z-index: 1;
-            background: rgba(255, 255, 255, 0.4);
-            text-align: center;
-        }
-
-        .footer-brand {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.78rem;
+            max-width: 460px;
+            margin: 0 auto 22px;
             line-height: 1.6;
         }
 
-        footer .heart {
-            color: var(--primary);
+        .catalog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 26px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 100px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+
+        .catalog-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px var(--primary-glow);
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .footer-logo {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: white;
+            padding: 3px;
+        }
+
+        .footer-logo-fallback {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .footer-brand-text {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .footer-brand-sub {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .footer-desc {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .footer-heart {
+            color: #ec4899;
             animation: heart-beat 1.5s infinite;
             display: inline-block;
         }
@@ -767,29 +692,33 @@
         /* ===== WHATSAPP FLOAT ===== */
         .whatsapp-float {
             position: fixed;
-            bottom: 26px; right: 26px;
-            width: 56px; height: 56px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
+            bottom: 24px;
+            right: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
             color: white;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
             text-decoration: none;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4), 0 4px 12px rgba(15, 23, 42, 0.1);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 998;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1) rotate(-10deg);
-            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.5);
+            transform: scale(1.1) rotate(-8deg);
+            box-shadow: 0 16px 40px rgba(37, 211, 102, 0.5);
         }
 
         .whatsapp-float::before {
             content: '';
             position: absolute;
             inset: -4px;
-            border-radius: 22px;
+            border-radius: 20px;
             border: 2px solid rgba(37, 211, 102, 0.4);
             animation: pulse-ring 2s infinite;
         }
@@ -800,34 +729,57 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            nav.navbar { padding: 8px 8px 8px 14px; gap: 16px; }
-            .nav-links { display: none; }
-            .mobile-toggle { display: flex; }
-            .section { padding: 55px 5%; }
-            .hero { padding: 110px 5% 40px; }
-            .quick-info { padding: 30px 5% 40px; }
-            .catalog-box { padding: 40px 24px; border-radius: 24px; }
-            .company-box { padding: 20px 5% 40px; }
-            .whatsapp-float { bottom: 18px; right: 18px; width: 52px; height: 52px; }
+        @media (max-width: 800px) {
+            .hero { padding: 50px 0 40px; }
+            .hero-photo-wrap { width: 120px; height: 120px; }
+            .hero-photo { width: 120px; height: 120px; }
+            .section { padding: 40px 0; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-desc { max-width: 100%; }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         @media (max-width: 500px) {
-            .projects-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.1rem; }
-            .hero-sub { font-size: 1rem; }
-            .btn { padding: 12px 20px; font-size: 0.85rem; }
-            .btn-card { font-size: 0.78rem; padding: 9px 12px; }
-            .project-card { padding: 18px; }
+            .hero h1 { font-size: 1.4rem; }
+            .hero-sub { font-size: 0.92rem; }
+            .btn { padding: 11px 18px; font-size: 0.82rem; }
+            .project-item {
+                padding: 14px;
+                gap: 12px;
+            }
+            .project-emoji {
+                width: 38px;
+                height: 38px;
+                font-size: 1.15rem;
+            }
+            .project-name { font-size: 0.92rem; }
+            .project-desc { font-size: 0.75rem; }
+            .project-cta {
+                font-size: 0.72rem;
+            }
+            .catalog-box { padding: 30px 22px; }
+            .whatsapp-float {
+                bottom: 18px;
+                right: 18px;
+                width: 48px;
+                height: 48px;
+            }
         }
 
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb {
-            background: rgba(99, 102, 241, 0.3);
-            border-radius: 5px; border: 2px solid var(--bg);
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 5px;
+            border: 2px solid var(--bg);
         }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.5); }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
     </style>
 </head>
 <body>
@@ -836,399 +788,387 @@
         <div class="bg-orb orb-1"></div>
         <div class="bg-orb orb-2"></div>
         <div class="bg-orb orb-3"></div>
-        <div class="bg-orb orb-4"></div>
         <div class="bg-grid"></div>
         <div class="particles" id="particles"></div>
     </div>
 
-    <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo">
-            <div class="nav-logo-icon">A</div>
-            <span>Ana Dev</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#catalogo">Catálogo</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-        <button class="mobile-toggle" onclick="toggleMobile()">☰</button>
-    </nav>
-
-    <!-- HERO -->
+    <!-- HERO / APRESENTAÇÃO -->
     <section class="hero">
-        <div class="hero-badge">
-            <div class="hero-badge-dot">✓</div>
-            <span>Disponível para novos projetos</span>
-        </div>
+        <div class="container">
+            <div class="hero-photo-wrap">
+                <img 
+                    src="https://raw.githubusercontent.com/datadeshsolucoes-design/Servicos-digitais/main/foto%20(1).jpg" 
+                    alt="Ana Desenvolvedora" 
+                    class="hero-photo"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:3.5rem;border:3px solid rgba(139,92,246,0.5);&quot;>👩‍💻</div>';">
+            </div>
 
-        <h1>
-            Olá, sou <span class="gradient-text">Ana Desenvolvedora</span>
-        </h1>
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>Disponível para novos projetos</span>
+            </div>
 
-        <p class="hero-sub">
-            Resolvo problemas com <strong>ferramentas digitais sob medida</strong>. Sites, dashboards, planilhas inteligentes e sistemas personalizados — tudo criado pela <strong>DataDesh Soluções Digitais</strong>.
-        </p>
+            <h1>
+                Olá, sou <span class="gradient">Ana Desenvolvedora</span>
+            </h1>
 
-        <div class="btn-row">
-            <a href="https://servicos-digitais.datadeshsolucoes.workers.dev/" target="_blank" class="btn btn-primary">
-                <span class="ico">🌐</span>
-                <span>Visitar meu site</span>
-            </a>
-            <a href="#projetos" class="btn btn-ghost">
-                <span class="ico">👀</span>
-                <span>Ver projetos</span>
-            </a>
+            <p class="hero-sub">
+                Resolvo problemas com ferramentas digitais sob medida. Sites, dashboards, planilhas inteligentes e sistemas personalizados — tudo criado pela DataDesh Soluções Digitais.
+            </p>
+
+            <div class="btn-row">
+                <a href="https://servicos-digitais.datadeshsolucoes.workers.dev/" target="_blank" class="btn btn-primary">
+                    🌐 Visitar meu site
+                </a>
+                <a href="#projetos" class="btn btn-ghost">
+                    👀 Ver projetos
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- CONTATOS RÁPIDOS -->
-    <section class="quick-info">
-        <a href="https://wa.me/5531984987116" target="_blank" class="quick-card">
-            <div class="quick-icon quick-icon-wpp">💬</div>
-            <div class="quick-info-text">
-                <div class="quick-info-label">WhatsApp</div>
-                <div class="quick-info-value">(31) 98498-7116</div>
+    <!-- CONTATOS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head">
+                <div class="section-label">Fale comigo</div>
+                <h2 class="section-title">Contatos rápidos</h2>
             </div>
-        </a>
 
-        <a href="mailto:datadshsolucoes@gmail.com" class="quick-card">
-            <div class="quick-icon quick-icon-email">✉️</div>
-            <div class="quick-info-text">
-                <div class="quick-info-label">E-mail</div>
-                <div class="quick-info-value">datadshsolucoes@gmail.com</div>
-            </div>
-        </a>
+            <div class="contacts-grid">
+                <a href="https://wa.me/5531984987116" target="_blank" class="contact-item">
+                    <div class="contact-ico contact-ico-wpp">💬</div>
+                    <div class="contact-txt">
+                        <div class="contact-lbl">WhatsApp</div>
+                        <div class="contact-val">(31) 98498-7116</div>
+                    </div>
+                </a>
 
-        <a href="https://instagram.com/datadeshsolucoesdigitais" target="_blank" class="quick-card">
-            <div class="quick-icon quick-icon-insta">📷</div>
-            <div class="quick-info-text">
-                <div class="quick-info-label">Instagram</div>
-                <div class="quick-info-value">@datadeshsolucoesdigitais</div>
-            </div>
-        </a>
+                <a href="mailto:datadshsolucoes@gmail.com" class="contact-item">
+                    <div class="contact-ico contact-ico-email">✉️</div>
+                    <div class="contact-txt">
+                        <div class="contact-lbl">E-mail</div>
+                        <div class="contact-val">datadshsolucoes@gmail.com</div>
+                    </div>
+                </a>
 
-        <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="quick-card">
-            <div class="quick-icon quick-icon-git">💻</div>
-            <div class="quick-info-text">
-                <div class="quick-info-label">GitHub</div>
-                <div class="quick-info-value">Ana Desenvolvedora</div>
+                <a href="https://instagram.com/datadeshsolucoesdigitais" target="_blank" class="contact-item">
+                    <div class="contact-ico contact-ico-insta">📷</div>
+                    <div class="contact-txt">
+                        <div class="contact-lbl">Instagram</div>
+                        <div class="contact-val">@datadeshsolucoesdigitais</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AnaDesenvolvedora" target="_blank" class="contact-item">
+                    <div class="contact-ico contact-ico-git">💻</div>
+                    <div class="contact-txt">
+                        <div class="contact-lbl">GitHub</div>
+                        <div class="contact-val">Ana Desenvolvedora</div>
+                    </div>
+                </a>
             </div>
-        </a>
+        </div>
     </section>
 
     <!-- PROJETOS -->
     <section class="section" id="projetos">
-        <div class="section-head">
-            <div class="section-label">
-                <span class="section-label-dot"></span>
-                <span>Portfólio</span>
+        <div class="container">
+            <div class="section-head">
+                <div class="section-label">Portfólio</div>
+                <h2 class="section-title">Projetos que já criei</h2>
             </div>
-            <h2 class="section-title">Projetos que <span class="gradient-text">já criei</span></h2>
-            <p class="section-sub">
-                Clique em "Ver Projeto" pra abrir cada um e explorar ao vivo. Tudo funcional, tudo real. ✨
-            </p>
-        </div>
 
-        <div class="projects-grid">
+            <div class="projects-list">
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/prototipositeclinica/#contato" target="_blank" class="project-item">
                     <div class="project-emoji">🌐</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Site</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Site Simples
+                            <span class="project-cat">Site</span>
+                        </div>
+                        <div class="project-desc">Site institucional elegante para clínica, com agendamento direto via WhatsApp.</div>
                     </div>
-                </div>
-                <div class="project-title">Site Simples</div>
-                <div class="project-desc">Site institucional elegante para clínica, com agendamento direto via WhatsApp.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/prototipositeclinica/#contato" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/Bellas-Pizzaria/#home" target="_blank" class="project-item">
                     <div class="project-emoji">🍕</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Cardápio</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Cardápio Virtual Inteligente
+                            <span class="project-cat">Cardápio</span>
+                        </div>
+                        <div class="project-desc">Cardápio interativo com carrinho e pedido automático enviado via WhatsApp.</div>
                     </div>
-                </div>
-                <div class="project-title">Cardápio Virtual Inteligente</div>
-                <div class="project-desc">Cardápio interativo com carrinho e pedido automático enviado via WhatsApp.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/Bellas-Pizzaria/#home" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/Convite-Digital/#detalhes" target="_blank" class="project-item">
                     <div class="project-emoji">🎉</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Evento</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Convite Especial para Eventos
+                            <span class="project-cat">Evento</span>
+                        </div>
+                        <div class="project-desc">Convite digital com contagem regressiva, confirmação de presença e exportação em Excel.</div>
                     </div>
-                </div>
-                <div class="project-title">Convite Especial para Eventos</div>
-                <div class="project-desc">Convite digital com contagem regressiva, confirmação e exportação em Excel.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/Convite-Digital/#detalhes" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/Organizador-de-Festas-e-Eventos/#confirmar" target="_blank" class="project-item">
                     <div class="project-emoji">🥩</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Colaborativo</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Lista Churrasco da Família
+                            <span class="project-cat">Colaborativo</span>
+                        </div>
+                        <div class="project-desc">Organizador colaborativo onde cada um escolhe o que trazer, sem duplicar itens.</div>
                     </div>
-                </div>
-                <div class="project-title">Lista Churrasco da Família</div>
-                <div class="project-desc">Organizador colaborativo: cada um escolhe o que trazer, sem duplicar itens.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/Organizador-de-Festas-e-Eventos/#confirmar" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/Lista-de-Presentes/#contato" target="_blank" class="project-item">
                     <div class="project-emoji">🎁</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Lista</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Lista de Presentes Virtual
+                            <span class="project-cat">Lista</span>
+                        </div>
+                        <div class="project-desc">Lista inteligente com cotas coletivas — ninguém dá presente repetido.</div>
                     </div>
-                </div>
-                <div class="project-title">Lista de Presentes Virtual</div>
-                <div class="project-desc">Lista inteligente com cotas coletivas — ninguém dá presente repetido.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/Lista-de-Presentes/#contato" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/controledeferramentassaude/" target="_blank" class="project-item">
                     <div class="project-emoji">🔗</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Organização</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Organização de Links
+                            <span class="project-cat">Organização</span>
+                        </div>
+                        <div class="project-desc">Central de ferramentas e links essenciais, tudo organizado em um só lugar.</div>
                     </div>
-                </div>
-                <div class="project-title">Organização de Links</div>
-                <div class="project-desc">Central de ferramentas e links essenciais, tudo organizado em um só lugar.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/controledeferramentassaude/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/painelcensoibgedistritoeldorado/" target="_blank" class="project-item">
                     <div class="project-emoji">📊</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Dashboard</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Painel de Dados IBGE
+                            <span class="project-cat">Dashboard</span>
+                        </div>
+                        <div class="project-desc">Dashboard interativo com dados do Censo IBGE do Distrito Eldorado.</div>
                     </div>
-                </div>
-                <div class="project-title">Painel de Dados IBGE</div>
-                <div class="project-desc">Dashboard interativo com dados do Censo IBGE do Distrito Eldorado.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/painelcensoibgedistritoeldorado/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/ociconsolidado/" target="_blank" class="project-item">
                     <div class="project-emoji">📈</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Executivo</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Painel Executivo OCI
+                            <span class="project-cat">Executivo</span>
+                        </div>
+                        <div class="project-desc">Painel consolidado com visão executiva dos indicadores OCI.</div>
                     </div>
-                </div>
-                <div class="project-title">Painel Executivo OCI</div>
-                <div class="project-desc">Painel consolidado com visão executiva dos indicadores OCI.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/ociconsolidado/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/saudecontatosubs/" target="_blank" class="project-item">
                     <div class="project-emoji">📞</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Contatos</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Lista Telefônica Virtual
+                            <span class="project-cat">Contatos</span>
+                        </div>
+                        <div class="project-desc">Agenda telefônica completa da rede de saúde, com busca rápida e intuitiva.</div>
                     </div>
-                </div>
-                <div class="project-title">Lista Telefônica Virtual</div>
-                <div class="project-desc">Agenda telefônica completa da rede de saúde, com busca rápida e intuitiva.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/saudecontatosubs/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/saudepaginafluxodaregula-o/" target="_blank" class="project-item">
                     <div class="project-emoji">📄</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Documentos</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Resumo de Documentos
+                            <span class="project-cat">Documentos</span>
+                        </div>
+                        <div class="project-desc">Página com fluxo da regulação em saúde — toda a informação centralizada.</div>
                     </div>
-                </div>
-                <div class="project-title">Resumo de Documentos</div>
-                <div class="project-desc">Página com fluxo da regulação em saúde — toda a informação centralizada.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/saudepaginafluxodaregula-o/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://portifolio.datadeshsolucoes.workers.dev/" target="_blank" class="project-item">
                     <div class="project-emoji">🎨</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Portfólio</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Portfólio Virtual
+                            <span class="project-cat">Portfólio</span>
+                        </div>
+                        <div class="project-desc">Vitrine completa com todos os serviços da DataDesh Soluções Digitais.</div>
                     </div>
-                </div>
-                <div class="project-title">Portfólio Virtual</div>
-                <div class="project-desc">Vitrine completa com todos os serviços da DataDesh Soluções Digitais.</div>
-                <div class="project-actions">
-                    <a href="https://portifolio.datadeshsolucoes.workers.dev/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://curriculo.datadeshsolucoes.workers.dev/" target="_blank" class="project-item">
                     <div class="project-emoji">📝</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Currículo</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Currículo Virtual
+                            <span class="project-cat">Currículo</span>
+                        </div>
+                        <div class="project-desc">Currículo digital moderno e interativo da Ana Desenvolvedora.</div>
                     </div>
-                </div>
-                <div class="project-title">Currículo Virtual</div>
-                <div class="project-desc">Currículo digital moderno e interativo da Ana Desenvolvedora.</div>
-                <div class="project-actions">
-                    <a href="https://curriculo.datadeshsolucoes.workers.dev/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://anadesenvolvedora.github.io/Ferramenta-OCI/" target="_blank" class="project-item">
                     <div class="project-emoji">🔐</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Sistema</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Ferramenta Inteligente de Análise
+                            <span class="project-cat">Sistema</span>
+                        </div>
+                        <div class="project-desc">Sistema completo com login, senha, dashboards e lógica personalizada.</div>
                     </div>
-                </div>
-                <div class="project-title">Ferramenta Inteligente de Análise</div>
-                <div class="project-desc">Sistema completo com login, senha, dashboards e lógica personalizada.</div>
-                <div class="project-actions">
-                    <a href="https://anadesenvolvedora.github.io/Ferramenta-OCI/" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="project-card">
-                <div class="project-top">
+                <a href="https://docs.google.com/spreadsheets/d/12LOIIdR6bSkS1vV2o6984K1UvUsMGrHIg6z0xcSCpAs/edit?gid=1423732641#gid=1423732641" target="_blank" class="project-item">
                     <div class="project-emoji">📑</div>
-                    <div class="project-meta">
-                        <div class="project-cat">Planilha</div>
+                    <div class="project-content">
+                        <div class="project-name">
+                            Painel Automatizado em Planilhas
+                            <span class="project-cat">Planilha</span>
+                        </div>
+                        <div class="project-desc">Automação completa no Google Sheets com fórmulas, scripts e dashboards.</div>
                     </div>
-                </div>
-                <div class="project-title">Painel Automatizado em Planilhas</div>
-                <div class="project-desc">Automação completa no Google Sheets com fórmulas, scripts e dashboards.</div>
-                <div class="project-actions">
-                    <a href="https://docs.google.com/spreadsheets/d/12LOIIdR6bSkS1vV2o6984K1UvUsMGrHIg6z0xcSCpAs/edit?gid=1423732641#gid=1423732641" target="_blank" class="btn-card btn-view">
-                        <span>Ver Projeto</span>
-                        <span>→</span>
+                    <div class="project-cta">
+                        <span>Clique aqui</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="section">
+        <div class="container">
+            <div class="catalog-box">
+                <div class="catalog-content">
+                    <span class="catalog-emoji">📚</span>
+                    <h2 class="catalog-title">Catálogo completo de serviços</h2>
+                    <p class="catalog-desc">
+                        Todos os serviços da DataDesh Soluções Digitais organizados em um só lugar. Descubra qual solução combina com seu desafio.
+                    </p>
+                    <a href="https://datadeshsolucoes-design.github.io/catalago-sem-precos-DataDesh/" target="_blank" class="catalog-btn">
+                        Ver Catálogo Completo →
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- CATÁLOGO DESTAQUE -->
-    <section class="catalog-section" id="catalogo">
-        <div class="catalog-box">
-            <span class="catalog-emoji">📚</span>
-            <h2 class="catalog-title">Catálogo completo de serviços</h2>
-            <p class="catalog-desc">
-                Todos os serviços da DataDesh Soluções Digitais organizados em um só lugar. Descubra qual solução combina com seu desafio.
-            </p>
-            <a href="https://datadeshsolucoes-design.github.io/catalago-sem-precos-DataDesh/" target="_blank" class="catalog-btn">
-                <span>Ver Catálogo</span>
-                <span>→</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- INFO EMPRESA -->
-    <section class="company-box" id="contato">
-        <div class="company-inner">
-            <div class="company-item">
-                <div class="company-label">Empresa</div>
-                <div class="company-value">DataDesh Soluções Digitais</div>
-            </div>
-            <div class="company-item">
-                <div class="company-label">CNPJ</div>
-                <div class="company-value">66.884.261/0001-20</div>
-            </div>
-            <div class="company-item">
-                <div class="company-label">Especialidade</div>
-                <div class="company-value">Soluções Sob Medida</div>
-            </div>
-            <div class="company-item">
-                <div class="company-label">Atendimento</div>
-                <div class="company-value">100% Online <small>Toda região do Brasil</small></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- RODAPÉ -->
     <footer>
-        <div class="footer-brand">Ana Desenvolvedora</div>
-        <p>DataDesh Soluções Digitais · CNPJ 66.884.261/0001-20</p>
-        <p style="margin-top: 6px;">Feito com <span class="heart">❤</span> para resolver problemas com tecnologia</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-brand">
+                        <img 
+                            src="https://raw.githubusercontent.com/datadeshsolucoes-design/Servicos-digitais/main/logo.jpeg" 
+                            alt="DataDesh" 
+                            class="footer-logo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="footer-logo-fallback" style="display: none;">D</div>
+                        <div>
+                            <div class="footer-brand-text">DataDesh Soluções Digitais</div>
+                            <div class="footer-brand-sub">por Ana Desenvolvedora</div>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        Transformo problemas em ferramentas digitais sob medida. Sites, dashboards, sistemas e automações que resolvem de verdade.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5531984987116" target="_blank">📱 (31) 98498-7116</a>
+                    <a href="mailto:datadshsolucoes@gmail.com">✉️ datadshsolucoes@gmail.com</a>
+                    <a href="https://instagram.com/datadeshsolucoesdigitais" target="_blank">📷 @datadeshsolucoesdigitais</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informações</h4>
+                    <p>🏢 DataDesh Soluções Digitais</p>
+                    <p>📄 CNPJ: 66.884.261/0001-20</p>
+                    <a href="https://github.com/AnaDesenvolvedora" target="_blank">💻 github.com/AnaDesenvolvedora</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2025 DataDesh Soluções Digitais · Todos os direitos reservados</span>
+                <span>Feito com <span class="footer-heart">❤</span> para resolver problemas</span>
+            </div>
+        </div>
     </footer>
 
     <a href="https://wa.me/5531984987116" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">💬</a>
 
     <script>
-        // ===== PARTÍCULAS =====
+        // Partículas
         function initParticles() {
             const c = document.getElementById('particles');
             if (!c) return;
-            const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#ec4899', '#10b981'];
-            for (let i = 0; i < 35; i++) {
+            const colors = ['#8b5cf6', '#06b6d4', '#ec4899', '#10b981'];
+            for (let i = 0; i < 30; i++) {
                 const p = document.createElement('div');
                 p.className = 'particle';
-                const size = Math.random() * 4 + 2;
+                const size = Math.random() * 3 + 1.5;
                 p.style.width = size + 'px';
                 p.style.height = size + 'px';
                 p.style.left = Math.random() * 100 + '%';
@@ -1239,41 +1179,6 @@
                 c.appendChild(p);
             }
         }
-
-        // ===== NAVBAR SCROLL =====
-        window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
-        });
-
-        // ===== MOBILE MENU =====
-        function toggleMobile() {
-            const nav = document.querySelector('.nav-links');
-            if (nav.style.display === 'flex') {
-                nav.style.display = '';
-            } else {
-                nav.style.display = 'flex';
-                nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.top = '110%';
-                nav.style.left = '0';
-                nav.style.right = '0';
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.backdropFilter = 'blur(30px)';
-                nav.style.padding = '16px';
-                nav.style.gap = '4px';
-                nav.style.borderRadius = '20px';
-                nav.style.border = '1px solid rgba(15, 23, 42, 0.08)';
-                nav.style.boxShadow = '0 20px 50px rgba(15, 23, 42, 0.1)';
-            }
-        }
-
-        // Fechar mobile menu ao clicar em link
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => {
-                const nav = document.querySelector('.nav-links');
-                if (window.innerWidth < 900) nav.style.display = '';
-            });
-        });
 
         initParticles();
     </script>
